@@ -116,16 +116,14 @@ namespace Assets.Code.BoardData
             {
                 StartCoroutine(Lose());
             }
-            else if(entity is Enemy)
+            else if (entity is Enemy)
             {
-                if(_cachedEntities.Count > 1)
-                {
-                    _cachedEntities.Remove(entity);
-                }
-                else
+                _cachedEntities.Remove(entity);
+                
+                if (_cachedEntities.Count < 2)
                 {
                     StartCoroutine(Victory());
-                }
+                }               
             }
         }
 

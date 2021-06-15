@@ -35,7 +35,7 @@ namespace Assets.Code.Units
         {
             var targetPosition = Board.Instance.GetWorldPosition(BoardPosition);
             var distance = Vector3.Distance(transform.position, targetPosition);
-            
+
             FlyView();
 
             transform.rotation = BoardMovementHelper.GetRotation(Direction);
@@ -54,16 +54,16 @@ namespace Assets.Code.Units
         {
             var dir = BoardMovementHelper.MovementDirectionToDirection(Direction);
 
-            characterMesh.rotation = Quaternion.Euler(new Vector3(0f,0f ,180f));
-            characterMesh.position = new Vector3(characterMesh.position.x, 1.3f, characterMesh.position.z);
+            characterMesh.localRotation = Quaternion.Euler(new Vector3(0f, 0f, 180f));
+            characterMesh.localPosition = new Vector3(characterMesh.localPosition.x, 1.3f, characterMesh.localPosition.z);
             animator.SetTrigger("fly");
         }
 
         private void ViewStop()
         {
             animator.SetTrigger("idle");
-            characterMesh.rotation = Quaternion.identity;
-            characterMesh.position = new Vector3(0f, -0.5f, 0f);
+            characterMesh.localRotation = Quaternion.identity;
+            characterMesh.localPosition = new Vector3(0f, -0.5f, 0f);
         }
 
         private void EnableRagdol(GameObject[] bones, Rigidbody middleSpine, MovementDirection direction)
